@@ -4,15 +4,18 @@ import Head from 'next/head';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'next-i18next';
 import { getStaticPaths, makeStaticProps } from '../../lib/getStatic';
-import Error from '../../../components/Error';
-import Footer from '../../../components/Footer';
-import Header from '../../../components/Header';
+import Error from '../../components/Error';
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
 import brand from '../../public/text/brand';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   dedicatedPage: {
-    background: theme.palette.type === 'dark' ? theme.palette.background.default : theme.palette.background.paper,
-  }
+    background:
+      theme.palette.type === 'dark'
+        ? theme.palette.background.default
+        : theme.palette.background.paper,
+  },
 }));
 
 function ErrorPage(props) {
@@ -26,13 +29,17 @@ function ErrorPage(props) {
       <Fragment>
         <Head>
           <title>
-            { brand.starter.name }
+            {brand.starter.name}
             &nbsp; -&nbsp;
             {errorCode}
           </title>
         </Head>
         <div className={classes.dedicatedPage}>
-          <Header onToggleDark={onToggleDark} onToggleDir={onToggleDir} invert />
+          <Header
+            onToggleDark={onToggleDark}
+            onToggleDir={onToggleDir}
+            invert
+          />
           <Error errorCode={errorCode} text={t('common:404')} />
           {/* <Footer /> */}
         </div>
